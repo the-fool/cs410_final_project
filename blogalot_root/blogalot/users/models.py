@@ -1,4 +1,4 @@
-from flask_security import UserMixin, RoleMixn
+from flask_security import UserMixin, RoleMixin
 
 from ..core import db
 from ..helpers import JsonSerializer
@@ -8,6 +8,7 @@ roles_users = db.Table(
     db.Column('user_id', db.Integer(), db.ForeignKey('users.id')),
     db.Column('role_id', db.Integer(), db.ForeignKey('roles.id'))
 )
+
 
 class Role(RoleMixin, db.Model):
     __tablename__ = 'roles'
@@ -22,10 +23,12 @@ class Role(RoleMixin, db.Model):
 
     def __ne__(self, other):
         return (self.name != other and
-                self.name != getattr(other, 'name', None))
+                self.name != getattr(other, 'name'))
+
 
 class UserJsonSerializer(JsonSerializer):
     __json_public__ = ['id', 'email']
+
 
 class User(UserJsonSerializer, UserMixin, db.Model):
     __tablename__ = 'users'
@@ -33,6 +36,7 @@ class User(UserJsonSerializer, UserMixin, db.Model):
     pk = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(120))
+    name = db.Column(db.String(120), unique=True)
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     last_login_at = db.Column(db.DateTime())
@@ -44,3 +48,4 @@ class User(UserJsonSerializer, UserMixin, db.Model):
 
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+    posts = db.relationship('Post', back_populates="author")

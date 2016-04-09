@@ -4,7 +4,8 @@ import importlib
 from flask import Blueprint
 from flask.json import JSONEncoder as BaseJSONEncoder
 
-def register_blueprint(app, package_name, package_path):
+
+def register_blueprints(app, package_name, package_path):
     rv = []
     for _, name, _ in pkgutil.iter_modules(package_path):
         m = importlib.import_module('%s.%s' % (package_name, name))
@@ -22,7 +23,7 @@ class JSONEncoder(BaseJSONEncoder):
             return obj.to_json()
         return super(JSONEncoder, self).default(obj)
 
-    
+
 class JsonSerializer(object):
     __json_public__ = None
     __json_hidden__ = None
@@ -33,7 +34,7 @@ class JsonSerializer(object):
             yield p.key
 
     def to_json(self):
-        field_name = self.get_field_name()
+        field_names = self.get_field_names()
 
         public = self.__json_public__ or field_names
         hidden = self.__json_hidden__ or []
