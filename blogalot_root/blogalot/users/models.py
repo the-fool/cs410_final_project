@@ -5,8 +5,8 @@ from ..helpers import JsonSerializer
 
 roles_users = db.Table(
     'roles_users',
-    db.Column('user_id', db.Integer(), db.ForeignKey('users.id')),
-    db.Column('role_id', db.Integer(), db.ForeignKey('roles.id'))
+    db.Column('user_id', db.Integer(), db.ForeignKey('users.pk')),
+    db.Column('role_id', db.Integer(), db.ForeignKey('roles.pk'))
 )
 
 
@@ -48,4 +48,3 @@ class User(UserJsonSerializer, UserMixin, db.Model):
 
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
-    posts = db.relationship('Post', back_populates="author")

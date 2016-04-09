@@ -11,5 +11,6 @@ class Post(PostJsonSerializer, db.Model):
 
     pk = db.Column(db.Integer(), primary_key=True)
     content = db.Column(db.String(255))
-
-    author = db.relationship("User", back_populates="posts")
+    author_pk = db.Column(db.BigInteger, db.ForeignKey('users.pk'),
+                          nullable=False, index=True)
+    author = db.relationship('User', backref='user_posts', foreign_keys=[author_pk])
