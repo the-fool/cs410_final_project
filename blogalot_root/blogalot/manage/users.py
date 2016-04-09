@@ -26,7 +26,7 @@ class CreateUserCommand(Command):
             print('\n'.join(errors))
 
 
-class DeletUserCommand(Command):
+class DeleteUserCommand(Command):
 
     def run(self):
         email = prompt('Email')

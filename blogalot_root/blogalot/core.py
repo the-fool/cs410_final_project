@@ -1,22 +1,27 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_security import Security
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
 
 security = Security()
+
+migrate = Migrate()
+
 
 class BlogalotError(Exception):
 
     def __init__(self, msg):
         self.msg = msg
 
+
 class Service(object):
     __model__ = None
 
     def _isinstance(self, model, raise_error=True):
         """Checks if the specified model instance matches the service's model.
-        By default this method will raise a `ValueError` if the model is not the
-        expected type.
+        By default this method will raise a `ValueError` if the model is
+        not the expected type.
 
         :param model: the model instance to check
         :param raise_error: flag to raise an error on a mismatch

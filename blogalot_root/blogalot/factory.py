@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_security import SQLAlchemyUserDatastore
 
-from .core import db, security
+from .core import db, security, migrate
 from .helpers import register_blueprints
 from .middleware import HTTPMethodOverrideMiddleware
 from .models import User, Role
@@ -18,7 +18,9 @@ def create_app(package_name, package_path,
     app.config.from_object(settings_override)
 
     db.init_app(app)
-    security.init_app(app, datastore=SQLAlchemyDatastore(db, User, Role),
+    migrate.init_app(app, db=db)
+
+    security.init_app(app, datastore=SQLAlchemyUserDatastore(db, User, Role),
                       register_blueprint=register_security_blueprint)
 
     register_blueprints(app, package_name, package_path)
