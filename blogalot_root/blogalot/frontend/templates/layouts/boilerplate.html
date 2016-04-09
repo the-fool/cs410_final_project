@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>{% block page_title %}Blogalot{% endblock %}</title>
+    <!-- inject:css -->
+    <!-- endinject -->
+  </head>
+  <body>
+    <div class="container">
+      {% block flash_messages %}
+        {% include "layouts/_messages.html" %}
+      {% endblock %}
+      {% block body %}
+        Bod
+      {% endblock %}
+    </div>
+    <!-- inject:js -->
+    <!-- endinject -->
+
+  </body>
+</html>
