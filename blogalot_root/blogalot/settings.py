@@ -1,7 +1,7 @@
 DEBUG = True
 SECRET_KEY = 'CS410'
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///blogalot.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:////home/thomas/workspace/.tmp/410db/blogalot.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 SECURITY_POST_LOGIN_VIEW = '/'

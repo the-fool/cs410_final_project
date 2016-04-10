@@ -12,12 +12,12 @@ class CreateUserCommand(Command):
         password = prompt('Password')
         data = dict(email=email,
                     password=password)
-        user_datastore.create_user(data)
+        user_datastore.create_user(**data)
         db.session.commit()
-        user = users.find(email=email)
+        user = users.first(email=email)
         if user:
             print('\nUser created successfully')
-            print('User(id=%s email=%s)' % (user.pk, user.email))
+            print('User(id=%s email=%s)' % (user.id, user.email))
             return
         print('\nError creating user:')
 
@@ -38,4 +38,4 @@ class ListUsersCommand(Command):
 
     def run(self):
         for u in users.all():
-            print('User (id=%s email=%s)' % (u.pk, u.email))
+            print('User (id=%s email=%s)' % (u.id, u.email))

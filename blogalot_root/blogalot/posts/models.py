@@ -9,8 +9,8 @@ class PostJsonSerializer(JsonSerializer):
 class Post(PostJsonSerializer, db.Model):
     __tablename__ = 'posts'
 
-    pk = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     content = db.Column(db.String(255))
-    author_pk = db.Column(db.BigInteger, db.ForeignKey('users.pk'),
-                          nullable=False, index=True)
-    author = db.relationship('User', backref='user_posts', foreign_keys=[author_pk])
+    author_id = db.Column(db.BigInteger, db.ForeignKey('users.id'),
+                          nullable=False, default=0, index=True)
+    author = db.relationship('User', backref='user_posts', foreign_keys=[author_id])
