@@ -1,4 +1,4 @@
-from flask_security import UserMixin, RoleMixin
+from flask_security import UserMixin, RoleMixin, SQLAlchemyUserDatastore
 
 from ..core import db
 from ..helpers import JsonSerializer
@@ -48,3 +48,5 @@ class User(UserJsonSerializer, UserMixin, db.Model):
 
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)

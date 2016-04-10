@@ -1,8 +1,7 @@
-from flask.ext.script import Command, prompt, prompt_pass
-from flask_security.forms import RegisterForm
-from flask_security. registerable import register_user
-from werkzeug.datastructures import MultiDict
+from flask.ext.script import Command, prompt
 
+
+from ..users.models import user_datastore, db
 from ..services import users
 
 
@@ -10,20 +9,17 @@ class CreateUserCommand(Command):
 
     def run(self):
         email = prompt('Email')
-        password = prompt_pass('Password')
-        password_confirm = prompt_pass('Confirm Password')
-        data = MultiDict(dict(email=email,
-                              password=password,
-                              password_confirm=password_confirm))
-        form = RegisterForm(data, csrf_enabled=False)
-        if form.validate():
-            user = register_user(email=email, password=password)
+        password = prompt('Password')
+        data = dict(email=email,
+                    password=password)
+        user_datastore.create_user(data)
+        db.session.commit()
+        user = users.find(email=email)
+        if user:
             print('\nUser created successfully')
-            print('User(id=%s email=%s)' % (user.id, user.email))
+            print('User(id=%s email=%s)' % (user.pk, user.email))
             return
         print('\nError creating user:')
-        for errors in form.errors.values():
-            print('\n'.join(errors))
 
 
 class DeleteUserCommand(Command):
@@ -42,4 +38,4 @@ class ListUsersCommand(Command):
 
     def run(self):
         for u in users.all():
-            print('User (id=%s email=%s)' % (u.id, u.email))
+            print('User (id=%s email=%s)' % (u.pk, u.email))
