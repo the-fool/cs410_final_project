@@ -48,5 +48,6 @@ class User(UserJsonSerializer, UserMixin, db.Model):
 
     roles = db.relationship('Role', secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic'))
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
