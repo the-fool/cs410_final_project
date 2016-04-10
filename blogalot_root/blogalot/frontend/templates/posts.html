@@ -1,6 +1,21 @@
 {% extends "layouts/boilerplate.html %}
+{% from "macros/form.html" import render_field %}
 
 {% block body %}
+<div class="page-header">
+  <h2>Hello {{current_user.username}}</h2>
+</div>
+<div class="new-article">
+  <h1>Write something</h1>
+  <div class="new-article-form">
+    <form method=post action="">
+      <dl>
+	{{ render_field(new_post_form.content) }}
+      </dl>
+      <p><input type=submit value=Create></p>
+    </form>
+  </div>
+</div>
 <h1>Blogalot Posts</h1>
 
 <ul class="posts">

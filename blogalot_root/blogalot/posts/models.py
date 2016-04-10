@@ -13,4 +13,3 @@ class Post(PostJsonSerializer, db.Model):
     content = db.Column(db.String(255))
     author_id = db.Column(db.BigInteger, db.ForeignKey('users.id'),
                           nullable=False, default=0, index=True)
-    author = db.relationship('User', backref='user_posts', foreign_keys=[author_id])
