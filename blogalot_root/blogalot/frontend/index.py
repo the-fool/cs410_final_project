@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import current_user
 
-from .posts.forms import NewPostForm
-from .posts.models import Post
+from blogalot.posts.forms import NewPostForm
+from blogalot.posts.models import Post
 
-from .core import db
+from blogalot.core import db
 
 from . import route
 
