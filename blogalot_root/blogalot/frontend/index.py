@@ -3,6 +3,7 @@ from flask_login import current_user
 
 from blogalot.posts.forms import NewPostForm
 from blogalot.posts.models import Post
+from ..services import posts as PostsService
 
 from blogalot.core import db
 
@@ -19,5 +20,5 @@ def index():
                     author=current_user._get_current_object())
         db.session.add(post)
         return redirect(url_for('.index'))
-    posts = Post.all()
-    return render_template('posts.html', posts=posts)
+    posts = PostsService.all()
+    return render_template('posts.html', posts=posts, new_post_form=form)

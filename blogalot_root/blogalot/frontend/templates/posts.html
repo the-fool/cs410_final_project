@@ -1,7 +1,7 @@
-{% extends "layouts/boilerplate.html %}
-{% from "macros/form.html" import render_field %}
+{% extends "layouts/boilerplate.html" %}
+{% from "macros/forms.html" import render_field %}
 
-{% block body %}
+{% block page_content %}
 <div class="page-header">
   <h2>Hello {{current_user.username}}</h2>
 </div>
@@ -10,7 +10,7 @@
   <div class="new-article-form">
     <form method=post action="">
       <dl>
-	{{ render_field(new_post_form.content) }}
+	{{ render_field(new_post_form.content, cols="48", rows="10") }}
       </dl>
       <p><input type=submit value=Create></p>
     </form>
@@ -33,6 +33,7 @@
      </div>
    </div>
  </li>
+ {% endfor %}
 </ul>
 
 {% endblock %}
