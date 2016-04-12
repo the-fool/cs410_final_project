@@ -1,9 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_security import Security, SQLAlchemyUserDatastore
+from flask_security import Security
 from flask_migrate import Migrate
+from flask_bootstrap import Bootstrap
 
 db = SQLAlchemy()
 
+bootstrap = Bootstrap()
 
 security = Security()
 
