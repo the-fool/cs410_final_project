@@ -9,6 +9,7 @@
   <h1>Write something</h1>
   <div class="new-article-form">
     <form method=post action="">
+      {{ new_post_form.hidden_tag() }}
       <dl>
 	{{ render_field(new_post_form.content, cols="48", rows="10") }}
       </dl>
@@ -22,9 +23,9 @@
  {% for post in posts %}
  <li class="post">
    <div class="post-content">
-     <div class="post-author">{{ post.author.name }}</div>
+     <div class="post-author">{{ post.author.name | safe }}</div>
      <div class="post-body">
-       {{ post.content }}
+       {{ post.content | safe }}
      </div>
      <div class="post-footer">
        {% if current_user == post.author %}
