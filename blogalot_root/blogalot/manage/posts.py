@@ -31,3 +31,4 @@ class ListPostsCommand(Command):
     def run(self):
         for p in posts.all():
             print('Post (id={0}, content={1}'.format(p.id, p.content[:15]))
+            

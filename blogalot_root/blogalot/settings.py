@@ -3,7 +3,7 @@ SECRET_KEY = 'CS410'
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:////home/thomas/workspace/.tmp/410db/blogalot.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+SESSION_COOKIE_HTTPONLY = False
 SECURITY_POST_LOGIN_VIEW = '/'
 SECURITY_PASSWORD_HASH = 'plaintext'
 SECURITY_PASSWORD_SALT = 'password_salt'
@@ -11,3 +11,4 @@ SECURITY_REMEMBER_SALT = 'remember_salt'
 SECURITY_RESET_SALT = 'reset_salt'
 SECURITY_RESET_WITHIN = '5 days'
 SECURITY_CONFIRM_WITHIN = '5 days'
+

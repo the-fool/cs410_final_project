@@ -17,6 +17,7 @@ def create_app(package_name, package_path,
     app.config.from_object(settings_override)
 
     db.init_app(app)
+
     migrate.init_app(app, db=db)
 
     security.init_app(app, user_datastore,
