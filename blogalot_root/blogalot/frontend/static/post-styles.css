@@ -1,0 +1,65 @@
+div.detail-box {
+    width: 450px;
+    border: 1px solid #bbb;
+    margin: 50px;
+}
+
+div.posts {
+    padding: 10px;
+    border-bottom: 1px dotted #bbb;
+}
+
+#post-list {
+    padding: 0;
+    list-style: none;
+}
+
+#post-list li {
+    margin: 0px;
+    margin-top: 15px;
+    border: 1px solid #bbb; 
+}
+
+#post-list li > div {
+   /* display: table-cell;*/
+}
+
+#post-list post-author {
+    width: 30px;
+    margin-right: 7px;
+    height: 100%;
+    float: left;
+}
+
+#post-list .post-footer span {
+
+}
+.title-box {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.title-box label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+#text-area-wrapper {
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+#text-area-wrapper textarea {
+    display: block;
+    width: 90%;
+    margin: auto;
+	     
+}
+
+input.btn-delete {
+    color: white;
+    background-color: #f0ad4e;
+    font-weight: 700;
+
+}

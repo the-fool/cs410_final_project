@@ -1,40 +1,57 @@
 {% extends "layouts/boilerplate.html" %}
 {% from "macros/forms.html" import render_field %}
 
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href={{url_for('static', filename='post-styles.css')}}>
+{% endblock %}
+
 {% block page_content %}
 <div class="page-header">
-  <h2>Hello {{current_user.username}}</h2>
+  <h2>Hello {{current_user.name}}</h2>
 </div>
-<div class="new-article">
-  <h1>Write something</h1>
-  <div class="new-article-form">
-    <form method=post action="">
+
+<h1>Blogalot Posts</h1>
+<div class="detail-box">
+  <div class="title-box">
+    <label>microBlogs</label>
+  </div>
+  <div class="posts">
+    <ul id="post-list">
+      {% for post in posts %}
+      <li class="post">
+	<div class="post-author">Author: {{ post.author.name | safe }}</div>
+	<br>
+	<div class="post-body">
+	  <p>
+	    {{ post.content | safe }}
+	  </p>
+	</div>
+	<div class="post-footer">
+	  {% if current_user == post.author %}
+	  <span class="label label-primary">Edit</span>
+	  <form class="form-inline" role="form" action="" method="POST">
+	    <input type="hidden" value="{{post.id}}" name="delete_id"/>
+	    <input type="submit" class="btn btn-sm btn-delete" value="Delete"/>
+	  </form>
+	  {% endif %}
+	</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="text-area-wrapper">
+     <label>Add a microBlog:</label>
+     <form class="form-inline" method=post action="">
       {{ new_post_form.hidden_tag() }}
       <dl>
-	{{ render_field(new_post_form.content, cols="48", rows="10") }}
+	{{ render_field(new_post_form.content) }}
       </dl>
       <p><input type=submit value=Create></p>
-    </form>
+     </form>
   </div>
+      
 </div>
-<h1>Blogalot Posts</h1>
 
-<ul class="posts">
- {% for post in posts %}
- <li class="post">
-   <div class="post-content">
-     <div class="post-author">{{ post.author.name | safe }}</div>
-     <div class="post-body">
-       {{ post.content | safe }}
-     </div>
-     <div class="post-footer">
-       {% if current_user == post.author %}
-       <span class="label label-primary">Edit</span>
-       {% endif %}
-     </div>
-   </div>
- </li>
- {% endfor %}
-</ul>
 
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, request, flash, url_for
 from flask_login import current_user
 
 from blogalot.posts.forms import NewPostForm
@@ -20,6 +20,14 @@ def index():
                     author=current_user._get_current_object())
         db.session.add(post)
         db.session.commit()
+        return redirect(url_for('.index'))
+    elif request.method == "POST":
+        print(request.form)
+        id = request.form['delete_id']
+        to_delete = PostsService.get(id)
+        PostsService.delete(to_delete)
+        flash("\"{0}\" deleted by author: {1}"
+              .format(to_delete.content, to_delete.author.name))
         return redirect(url_for('.index'))
     posts = PostsService.all()
 
