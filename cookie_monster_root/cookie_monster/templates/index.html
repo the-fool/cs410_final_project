@@ -21,7 +21,9 @@
       <td> {{ c.date }} </td>
       <td> {{ c.name }} </td>
       <td> {{ c.value }} </td>
-      <td><button class="btn btn-success">snag</button></td>
+      <td><button class="btn btn-success btn-sm"
+		  onclick="copyToClipboard(
+			   '{{c.name}}','{{c.value}}');" >snag</button></td>
     </tr>
     {% endfor %}
   </tbody>
@@ -33,6 +35,11 @@
 {{ super() }}
 <script>
 
+  function copyToClipboard(name,value) {
+  text = "document.cookie = '"+ name + "=" + value + "'";
+  window.prompt("Copy cookie-setter to clipboard: Ctrl+C, Enter", text);
+  }
+  
 var go_crazy = true;
   
 var bodyElement = document.querySelector("body");

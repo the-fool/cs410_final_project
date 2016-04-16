@@ -9,6 +9,7 @@ def index():
 
     if not cookies:
         cs = Cookie.query.all()
+        cs = sorted(cs, key=lambda c: c.date)
         return render_template('index.html', cookies=cs)
 
     cookies = [c.strip() for c in cookies.split(';')]

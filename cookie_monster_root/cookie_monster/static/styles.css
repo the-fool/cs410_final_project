@@ -2,7 +2,8 @@ body {
     background-image:url("cm.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center top; 
+    background-position: center top;
+    font-size: 10px;
 }
 
 table {
@@ -12,20 +13,20 @@ table {
 }
 
 .host {
-    width: 15%;
+    width: 18%;
 }
 
 .date {
-    width: 15%
+    width: 18%
 }
 .name {
-    width: 10%;
+    width: 7%;
 }
 .value {
     width: 50%;
 }
 .snag {
-    width: 10%;
+    width: 7%;
 }
 
 #title {

@@ -15,6 +15,7 @@ div.posts {
 }
 
 #post-list li {
+    padding: 7px;
     margin: 0px;
     margin-top: 15px;
     border: 1px solid #bbb; 
@@ -61,5 +62,10 @@ input.btn-delete {
     color: white;
     background-color: #f0ad4e;
     font-weight: 700;
+}
 
+.btn-edit {
+    float: left;
+    background-color: blue;
+    color: white;
 }
