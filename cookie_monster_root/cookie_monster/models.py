@@ -6,4 +6,4 @@ class Cookie(db.Model):
     host = db.Column(db.String(128))
     name = db.Column(db.String(128))
     value = db.Column(db.String(512))
-    
+    date = db.column(db.String(128))

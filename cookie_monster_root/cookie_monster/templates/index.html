@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div id="title">
+<h1>COOKIES!!!</h1>
+</div>
+<div id="table-wrapper">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="host" >HOST</th>
+      <th class="date">DATE</th>
+      <th class="name">NAME</th>
+      <th class="value">VALUE</th>
+      <th class="snag">copy</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in cookies %}
+    <tr>
+      <td> {{ c.host }} </td>
+      <td> {{ c.date }} </td>
+      <td> {{ c.name }} </td>
+      <td> {{ c.value }} </td>
+      <td><button class="btn btn-success">snag</button></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+
+var go_crazy = true;
+  
+var bodyElement = document.querySelector("body");
+ 
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+
+var delay = 0;
+ 
+function changeColor() {
+    delay++;
+     
+    if (delay > 3) {
+        bodyElement.style.backgroundColor = getRandomColor();
+        delay = 0;
+    }
+    if (go_crazy)
+     requestAnimationFrame(changeColor);
+}
+changeColor();           
+ 
+function getRandomColor() {
+    // creating a random number between 0 and 255
+    var r = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+     
+    // going from decimal to hex
+    var hexR = r.toString(16);
+    var hexG = g.toString(16);
+    var hexB = b.toString(16);
+     
+    // making sure single character values are prepended with a "0"
+    if (hexR.length == 1) {
+        hexR = "0" + hexR;
+    }
+     
+    if (hexG.length == 1) {
+        hexG = "0" + hexG;
+    }
+ 
+    if (hexB.length == 1) {
+        hexB = "0" + hexB;
+    }
+ 
+    // creating the hex value by concatenatening the string values
+    var hexColor = "#" + hexR + hexG + hexB;
+    return hexColor.toUpperCase();
+}
+
+$('body').click(function() {
+go_crazy = false;
+$('#table-wrapper').addClass('well table-well');
+$('body').off('click');
+});
+
+</script>
+{% endblock %}

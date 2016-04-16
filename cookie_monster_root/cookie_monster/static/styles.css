@@ -1,0 +1,41 @@
+body {
+    background-image:url("cm.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top; 
+}
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.host {
+    width: 15%;
+}
+
+.date {
+    width: 15%
+}
+.name {
+    width: 10%;
+}
+.value {
+    width: 50%;
+}
+.snag {
+    width: 10%;
+}
+
+#title {
+    text-align: center;
+}
+
+#title h1 {
+    font-size: 192px;
+}
+
+.table-well {
+    background-color: rgba(245, 245, 245, 0.97);
+}

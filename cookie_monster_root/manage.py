@@ -2,13 +2,14 @@ from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
 
 from cookie_monster import create_app, db
+from cookie_monster.models import Cookie
 
 app = create_app()
 manager = Manager(app)
 migrate = Migrate(app, db)
 
 def make_shell_context():
-    return dict(app=app, db=db)
+    return dict(app=app, db=db, Cookie=Cookie)
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command("db", MigrateCommand)
