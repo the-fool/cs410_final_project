@@ -30,9 +30,9 @@
 	<div class="post-footer">
 	  {% if current_user == post.author %}
 	 
-	  <button type="button" class="btn btn-sm btn-edit"
+	<!--UNIMPLEMENTED  <button type="button" class="btn btn-sm btn-edit"
 		  data-toggle="modal" data-target="#edit-modal">Edit</button>
-	 
+	 -->
 	  <form class="form-inline" role="form" action="" method="POST">
 	    <input type="hidden" value="{{post.id}}" name="delete_id"/>
 	    <input type="submit" class="btn btn-sm btn-delete" value="Delete"/>

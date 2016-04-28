@@ -1,7 +1,54 @@
+body {
+    background: linear-gradient(55deg, #f3c1e9, #16dba8);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+	0%{background-position:74% 0%}
+	50%{background-position:27% 100%}
+	100%{background-position:74% 0%}
+    }
+    @-moz-keyframes AnimationName {
+	0%{background-position:74% 0%}
+	50%{background-position:27% 100%}
+	100%{background-position:74% 0%}
+    }
+    @keyframes AnimationName { 
+	0%{background-position:74% 0%}
+	50%{background-position:27% 100%}
+	100%{background-position:74% 0%}
+    }
+}
 div.detail-box {
     width: 450px;
     border: 1px solid #bbb;
     margin: 50px;
+
+    background: linear-gradient(55deg, #fff,  #D3DDFD);
+    background-size: 200% 200%;
+
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+	0%{background-position:74% 0%}
+	50%{background-position:27% 100%}
+	100%{background-position:74% 0%}
+    }
+    @-moz-keyframes AnimationName {
+	0%{background-position:74% 0%}
+	50%{background-position:27% 100%}
+	100%{background-position:74% 0%}
+    }
+    @keyframes AnimationName { 
+	0%{background-position:74% 0%}
+	50%{background-position:27% 100%}
+	100%{background-position:74% 0%}
+    }
 }
 .brand {
     color: aliceblue;
