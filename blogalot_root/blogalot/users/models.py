@@ -37,6 +37,7 @@ class User(UserJsonSerializer, UserMixin, db.Model):
     email = db.Column(db.String(255), unique=True)
     password = db.Column(db.String(120))
     name = db.Column(db.String(120), unique=True)
+    credit = db.Column(db.String(120))
     active = db.Column(db.Boolean())
     confirmed_at = db.Column(db.DateTime())
     last_login_at = db.Column(db.DateTime())

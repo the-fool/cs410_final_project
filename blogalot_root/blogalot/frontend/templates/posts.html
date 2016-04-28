@@ -47,7 +47,7 @@
   </div>
   <div id="text-area-wrapper">
      <label>Add a microBlog:</label>
-     <form class="form-inline" method=post action="">
+     <form class="form-inline" method="post" action="">
       {{ new_post_form.hidden_tag() }}
       <dl>
 	{{ render_field(new_post_form.content) }}
@@ -66,13 +66,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
+          <h4 style="color:red;"><span class="glyphicon glyphicon-edit"></span> Edit</h4>
         </div>
         <div class="modal-body">
           <form role="form">
             <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <label for="blog-body"><span class="glyphicon glyphicon-user"></span> Username</label>
+	     
+              <input type="text" class="form-control" id="blog-body" placeholder="Enter email">
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>

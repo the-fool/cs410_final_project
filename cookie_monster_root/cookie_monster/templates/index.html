@@ -49,8 +49,14 @@ var requestAnimationFrame = window.requestAnimationFrame ||
                             window.webkitRequestAnimationFrame || 
                             window.msRequestAnimationFrame;
 
-var delay = 0;
- 
+  var delay = 0;
+  var out = true;
+  var ivl = setInterval(function()
+  {
+  var q = out ? '50%' : '150%';
+  out = !out; $('body').css('background-size', q);
+  }, 300);
+  
 function changeColor() {
     delay++;
      
@@ -93,7 +99,8 @@ function getRandomColor() {
 }
 
 $('body').click(function() {
-go_crazy = false;
+  go_crazy = false;
+  clearInterval(ivl);
 $('#table-wrapper').addClass('well table-well');
 $('body').off('click');
 });

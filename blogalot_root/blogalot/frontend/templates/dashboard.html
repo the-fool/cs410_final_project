@@ -1,6 +1,13 @@
 {% extends "layouts/boilerplate.html" %}
 
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href={{url_for('static', filename='dashboard.css')}}>
+{% endblock %}
+
 {% block page_content %}
-<h1>Dashboard</h1>
-<p>You are: {{current_user.name}}</p>
+<h1>Personal, Private Dashboard</h1>
+<h3>Name: {{current_user.name}}</h3>
+<h3>Email: {{current_user.email}}</h3>
+<h3>Credit Card Number: {{current_user.credit}}</h3>
 {% endblock %}

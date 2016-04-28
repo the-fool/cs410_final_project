@@ -3,6 +3,9 @@ div.detail-box {
     border: 1px solid #bbb;
     margin: 50px;
 }
+.brand {
+    color: aliceblue;
+}
 
 div.posts {
     padding: 10px;

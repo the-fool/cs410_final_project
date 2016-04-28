@@ -11,7 +11,9 @@ class CreateUserCommand(Command):
         email = prompt('Email')
         username = prompt('Username')
         password = prompt('Password')
+        credit = prompt('Credit')
         data = dict(email=email,
+                    credit=credit,
                     name=username,
                     password=password)
         user_datastore.create_user(**data)
